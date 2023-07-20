@@ -6,14 +6,14 @@ bot=Bot(token='6184545600:AAEsUnL01mXgrNjzTOq7jWfrlkVJ4mS8HWs')
 dp=Dispatcher(bot)
 
 
-button1=InlineKeyboardButton(text='button1', callback_data='In_First_button')
-button2=InlineKeyboardButton(text='button2', callback_data='In_Second_button')
-keyboard_inline=InlineKeyboardMarkup().add(button1,button2)
+button_uz=InlineKeyboardButton(text='🇺🇿 Узбекский', callback_data='uz_lang')
+button_ru=InlineKeyboardButton(text='🇷🇺 Русский', callback_data='ru_lang')
+lang_inline=InlineKeyboardMarkup().add(button_uz,button_ru)
 
 @dp.message_handler(commands=['start'])
 async def check(message: types.Message):
-    await message.reply('hi! how are you',reply_markup=keyboard_inline)
-
+    await message.reply(text='Выбор язык',reply_markup=lang_inline)
+    print(message.from_user.username)
 
 
 executor.start_polling(dp)
